@@ -1,6 +1,8 @@
 
 import './App.css'
-import CadastraUsuario from './telas/cadastrousuario'
+
+
+import Cadastro from './componentes/cadastro'
 
 
 
@@ -9,7 +11,8 @@ function App() {
 
   return (
     <>
-    <CadastraUsuario/>
+  <Cadastro/>
+ 
       
     </>
   )

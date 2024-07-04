@@ -1,10 +1,10 @@
+/*
+import CadastrarUsuario from "../componentes/cadastro";
 
-import CadastroPage from "../componentes/cadastro";
-
-const CadastraUsuario = ()=>
-(
+const CadastroUsuario = ()=>(
   <>
-<CadastroPage/>
+ <CadastrarUsuario/>
   </>
-)
-export default CadastraUsuario;
+);
+
+export default CadastroUsuario;*/

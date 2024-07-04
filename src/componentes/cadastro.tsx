@@ -1,55 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './cadastro.css'; // Certifique-se de que este arquivo existe
 
-const Cadastro: React.FC = () => {
-  const [nomeCompleto, setNomeCompleto] = useState('');
-  const [endereco, setEndereco] = useState('');
-  const [telefone1, setTelefone1] = useState('');
-  const [telefone2, setTelefone2] = useState('');
-  const [telefone3, setTelefone3] = useState('');
-  const [sexo, setSexo] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [confirmSenha, setConfirmSenha] = useState('');
-  const [msgError, setMsgError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+const Cadastro = () => {
+  const [nomeCompleto, setNomeCompleto] = useState<string>('');
+  const [endereco, setEndereco] = useState<string>('');
+  const [telefone1, setTelefone1] = useState<string>('');
+  const [telefone2, setTelefone2] = useState<string>('');
+  const [telefone3, setTelefone3] = useState<string>('');
+  const [sexo, setSexo] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [senha, setSenha] = useState<string>('');
+  const [confirmSenha, setConfirmSenha] = useState<string>('');
+  const [msgError, setMsgError] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string>('');
   const navigate = useNavigate();
-
-  const handleNomeCompletoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNomeCompleto(event.target.value);
-  };
-
-  const handleEnderecoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEndereco(event.target.value);
-  };
-
-  const handleTelefone1Change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTelefone1(event.target.value);
-  };
-
-  const handleTelefone2Change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTelefone2(event.target.value);
-  };
-
-  const handleTelefone3Change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTelefone3(event.target.value);
-  };
-
-  const handleSexoChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSexo(event.target.value);
-  };
-
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const handleSenhaChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSenha(event.target.value);
-  };
-
-  const handleConfirmSenhaChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setConfirmSenha(event.target.value);
-  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -71,9 +36,9 @@ const Cadastro: React.FC = () => {
         telefone: `${telefone1}-${telefone2}-${telefone3}`,
         sexo,
         email,
-        senha
+        senha,
       };
-      // Simulação de função de cadastro fictícia para evitar erros de compilação
+
       console.log('Dados do usuário:', dadosUsuario);
       // await cadastrarUsuario(dadosUsuario);
 
@@ -92,7 +57,6 @@ const Cadastro: React.FC = () => {
       setTimeout(() => {
         navigate('/login');
       }, 2000);
-
     } catch (error: any) {
       setMsgError('Erro ao cadastrar usuário: ' + error.message);
     }
@@ -107,7 +71,7 @@ const Cadastro: React.FC = () => {
           <input
             type="text"
             value={nomeCompleto}
-            onChange={handleNomeCompletoChange}
+            onChange={(e) => setNomeCompleto(e.target.value)}
             className="form-control"
             placeholder="Digite seu nome completo"
             style={{ padding: '12px' }}
@@ -118,7 +82,7 @@ const Cadastro: React.FC = () => {
           <input
             type="text"
             value={endereco}
-            onChange={handleEnderecoChange}
+            onChange={(e) => setEndereco(e.target.value)}
             className="form-control"
             placeholder="Digite seu endereço"
             style={{ padding: '12px' }}
@@ -130,21 +94,21 @@ const Cadastro: React.FC = () => {
             <input
               type="text"
               value={telefone1}
-              onChange={handleTelefone1Change}
+              onChange={(e) => setTelefone1(e.target.value)}
               className="form-control"
               style={{ width: '30%', marginRight: '5px', padding: '12px' }}
             />
             <input
               type="text"
               value={telefone2}
-              onChange={handleTelefone2Change}
+              onChange={(e) => setTelefone2(e.target.value)}
               className="form-control"
               style={{ width: '30%', marginRight: '5px', padding: '12px' }}
             />
             <input
               type="text"
               value={telefone3}
-              onChange={handleTelefone3Change}
+              onChange={(e) => setTelefone3(e.target.value)}
               className="form-control"
               style={{ width: '30%', padding: '12px' }}
             />
@@ -154,7 +118,7 @@ const Cadastro: React.FC = () => {
           <label>Sexo:</label>
           <select
             value={sexo}
-            onChange={handleSexoChange}
+            onChange={(e) => setSexo(e.target.value)}
             className="form-control"
             style={{ padding: '10px' }}
           >
@@ -169,7 +133,7 @@ const Cadastro: React.FC = () => {
           <input
             type="email"
             value={email}
-            onChange={handleEmailChange}
+            onChange={(e) => setEmail(e.target.value)}
             className="form-control"
             placeholder="Digite seu email"
             style={{ padding: '12px' }}
@@ -180,7 +144,7 @@ const Cadastro: React.FC = () => {
           <input
             type="password"
             value={senha}
-            onChange={handleSenhaChange}
+            onChange={(e) => setSenha(e.target.value)}
             className="form-control"
             placeholder="Digite sua senha"
             style={{ padding: '12px' }}
@@ -191,7 +155,7 @@ const Cadastro: React.FC = () => {
           <input
             type="password"
             value={confirmSenha}
-            onChange={handleConfirmSenhaChange}
+            onChange={(e) => setConfirmSenha(e.target.value)}
             className="form-control"
             placeholder="Confirme sua senha"
             style={{ padding: '12px' }}
